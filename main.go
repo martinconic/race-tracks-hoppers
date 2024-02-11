@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -29,7 +30,7 @@ func isValid(point Point, grid Grid) bool {
 	return point.X >= 0 && point.X < grid.Gx && point.Y >= 0 && point.Y < grid.Gy && !grid.Obs[point]
 }
 
-func findPath(start, end Point, grid Grid) {
+func findPath(start, end Point, grid Grid) string {
 	queue := []State{{start, Point{0, 0}, 0}}
 	visited := make(map[State]bool)
 
@@ -38,8 +39,8 @@ func findPath(start, end Point, grid Grid) {
 		queue = queue[1:]
 
 		if current.Pos.X == end.X && current.Pos.Y == end.Y {
-			log.Printf("Optimal solution takes %d hops \n", current.steps)
-			return
+			return fmt.Sprintf("Optimal solution takes %d hops", current.steps)
+
 		}
 		if visited[current] {
 			continue
@@ -63,12 +64,11 @@ func findPath(start, end Point, grid Grid) {
 
 		if current.Pos.X == queue[0].Pos.X && current.Pos.Y == queue[0].Pos.Y &&
 			current.Speed.X == queue[0].Speed.X && current.Speed.Y == queue[0].Speed.Y {
-			log.Println("No solution.")
-			return
+			return "No solution."
 		}
 	}
 
-	log.Println("No solution.")
+	return "No solution."
 }
 
 func abs(v int) int {
@@ -157,7 +157,7 @@ func main() {
 			}
 
 		}
-
-		findPath(start, end, grid)
+		log.Println(grid)
+		log.Println(findPath(start, end, grid))
 	}
 }
