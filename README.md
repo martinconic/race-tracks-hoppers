@@ -16,17 +16,18 @@ The first line contains the number of test cases (N) your program has to process
 Output
 The string 'No solution.' if there is no way the hopper can reach the finish point from the start point without hopping on an occupied square. Otherwise, the text 'Optimal solution takes N hops.', where N is the number of hops needed to get from start to finish point.
 
-Sample Input
-2
-55 
-4044 
-1 
-1423 
-33 
-0022
-2
-1102
-0211
+Sample Input<br />
+2<br />
+55<br /> 
+4044<br /> 
+1<br /> 
+1423<br /> 
+33<br /> 
+0022<br />
+2<br />
+1102<br />
+0211<br />
 
-Sample Output
-Optimal solution takes 7 hops. No solution.
+Sample Output<br />
+Optimal solution takes 7 hops.<br />
+No solution.
